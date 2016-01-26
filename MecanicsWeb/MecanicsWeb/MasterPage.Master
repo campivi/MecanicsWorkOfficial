@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -18,7 +18,6 @@
             <div class="title" 
                 style="font-family: Arial; font-size: 12px">
                 <h1>                
-                    <asp:Image ID="Logo" runat="server" SkinID="imgLogo" ImageAlign="Left" />
                     Sistema de Administración
                 </h1>
             </div>

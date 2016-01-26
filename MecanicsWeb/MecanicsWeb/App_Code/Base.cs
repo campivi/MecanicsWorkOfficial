@@ -9,17 +9,10 @@ using System.Net.Mail;
 using System.Net.Mime;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
-/// <summary>
-/// Summary description for Base
-/// </summary>
+
 public class Base : System.Web.UI.Page
 {
-	public Base()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    public Base() { }
 
     public void AlertaJS(string strJS)
     {
@@ -30,11 +23,8 @@ public class Base : System.Web.UI.Page
 
     public void Enviar(string de, string para, string titulo, string cuerpo, string server, string cc, string pass, string email2)
     {
-        /// <summary>
-        /// Funcion que permite enviar los correos
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks></remarks>
+        //Funcion que permite enviar los correos
+
         try
         {
             string[] destinatarios = cc.Split(';');
@@ -64,7 +54,7 @@ public class Base : System.Web.UI.Page
             mySmtpClient.UseDefaultCredentials = false;
             mySmtpClient.Credentials = new NetworkCredential(de, pass);//usuario y contraseña
             mySmtpClient.Timeout = 30000;
-            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
             mySmtpClient.Send(htmlMessage);
         }
         catch (Exception ex)
@@ -76,11 +66,8 @@ public class Base : System.Web.UI.Page
 
     public class Fechas
     {
-        /// <summary>
-        /// Funcion que permite Convetir la fecha de string a decimal
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks></remarks>
+        //Funcion que permite Convetir la fecha de string a decimal
+
         public static decimal ConvertirFechaDecimal(string fecha)
         {
             if (!string.IsNullOrEmpty(fecha))
@@ -94,11 +81,8 @@ public class Base : System.Web.UI.Page
             }
         }
 
-        /// <summary>
-        /// Funcion que permite Convetir la fecha de decimal a string
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks></remarks>
+        //Funcion que permite Convetir la fecha de decimal a string
+
         public static string ConvertirFechaString(decimal fecha)
         {
             if (fecha != 0)
@@ -112,21 +96,15 @@ public class Base : System.Web.UI.Page
             }
         }
 
-        /// <summary>
-        /// Funcion que permite obtener la hora en formato HH:mm:ss
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks></remarks>
+        //Funcion que permite obtener la hora en formato HH:mm:ss
+
         public static string ObtenerHora(DateTime fecha)
         {
             return string.Format("HH:mm:ss", Convert.ToString(fecha));
         }
 
-        /// <summary>
-        /// Funcion que permite obtener la fecha actual en formato dd/mm/aaaa
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks></remarks>
+        // Funcion que permite obtener la fecha actual en formato dd/mm/aaaa
+
         public static string ConvertirDateToString(DateTime Fecha)
         {
             string dia = string.Empty;
@@ -152,13 +130,9 @@ public class Base : System.Web.UI.Page
             fecha = dia + "/" + mes + "/" + anio;
             return fecha;
         }
-
-        /// <summary>
-        /// Funcion que permite obtener la hora actual en formato decimal
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        /// 
+        
+        // Funcion que permite obtener la hora actual en formato decimal
+        
         public static string ObtenerFechaAnterior()
         {
             string dia = string.Empty;

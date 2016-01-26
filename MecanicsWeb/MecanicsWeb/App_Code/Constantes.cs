@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-/// <summary>
-/// Summary description for Constantes
-/// </summary>
 public class Constantes
 {
-	public Constantes()
-	{        
-		
-	}
+    public Constantes()
+    {
+
+    }
 
     public class GESTION
     {
@@ -23,7 +20,7 @@ public class Constantes
     }
 
     public class PARAMETRIAS
-    { 
+    {
         public const int ESTADO = 1;
         public const int TIPO_DOC = 4;
         public const int GENERO = 8;
@@ -54,7 +51,7 @@ public class Constantes
     }
 
     public class Roles
-    { 
+    {
         public const string Director_de_Aprobaciones = "1";
         public const string Tesorería = "2";
         public const string Supervisor_de_Servicios_Proyectos = "3";
