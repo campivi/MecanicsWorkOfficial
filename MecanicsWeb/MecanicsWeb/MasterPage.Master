@@ -1,0 +1,51 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+
+    <div class="page">
+        <div class="header">
+            <div class="title" 
+                style="font-family: Arial; font-size: 12px">
+                <h1>                
+                    <asp:Image ID="Logo" runat="server" SkinID="imgLogo" ImageAlign="Left" />
+                    Sistema de Administración
+                </h1>
+            </div>
+            <div class="loginDisplay" style="font-family: Arial; font-size: 14px">
+                <asp:Label ID="lblUsuario" runat="server" Text=""></asp:Label>
+                <br />
+                <asp:Label ID="lblPerfil" runat="server" Text=""></asp:Label>
+                <br />
+                <asp:ImageButton ID="ibtChangePass" runat="server" ImageUrl="~/App_Themes/Menu/9.png" SkinID="imgChangePass" ToolTip="Cambiar Contraseña"
+                    AlternateText="Cambiar Contraseña" ForeColor="White" OnClick="ibtChangePass_Click" />
+                <asp:ImageButton ID="ibtSalir" runat="server" ImageUrl="~/App_Themes/Menu/1_close.png" SkinID="imgLogOut" ToolTip="Salir"
+                    OnClick="ibtSalir_Click"/>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" MaximumDynamicDisplayLevels="2" runat="server" CssClass="menu"
+                    EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    </form>
+</body>
+</html>
