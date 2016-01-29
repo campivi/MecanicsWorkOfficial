@@ -77,6 +77,7 @@
   <ItemGroup>
     <Content Include="Formularios\frmFormularioInicio.aspx" />
     <Content Include="Formularios\frmLogin.aspx" />
+    <Content Include="Formularios\frmVehiculoConsulta.aspx" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -114,6 +115,13 @@
     </Compile>
     <Compile Include="Formularios\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmVehiculoConsulta.aspx.cs">
+      <DependentUpon>frmVehiculoConsulta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmVehiculoConsulta.aspx.designer.cs">
+      <DependentUpon>frmVehiculoConsulta.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
