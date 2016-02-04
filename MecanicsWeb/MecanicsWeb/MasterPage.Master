@@ -9,6 +9,14 @@
 
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+        .auto-style2 {
+            width: 175px;
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
@@ -30,14 +38,9 @@
                     AlternateText="Cambiar Contraseña" ForeColor="White" OnClick="ibtChangePass_Click" />
                 <asp:ImageButton ID="ibtSalir" runat="server" ImageUrl="~/App_Themes/Menu/1_close.png" SkinID="imgLogOut" ToolTip="Salir"
                     OnClick="ibtSalir_Click"/>
-            </div>
-            <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" MaximumDynamicDisplayLevels="2" runat="server" CssClass="menu"
-                    EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
-                </asp:Menu>
-            </div>
+            </div>                        
         </div>
-        <div class="main">
+        <div class="main" >
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
         <div class="clear">

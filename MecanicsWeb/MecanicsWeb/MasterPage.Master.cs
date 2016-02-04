@@ -28,7 +28,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             {
                 lblUsuario.Text = "Bienvenido(a): " + Convert.ToString(Session["NOMBRE"]);
                 lblPerfil.Text = "Rol: " + Convert.ToString(Session["NombreRol"]);
-                ListaMenu();
+                FormInicial();
             }
         }
         catch (Exception)
@@ -47,72 +47,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
         Response.Redirect("~/Formularios/fmrLogin.aspx", false);
     }
 
+    public void FormInicial()
+    {
+        Response.Redirect("~/Formularios/fmrFormularioInicio.aspx", false);
+    }
+
     #endregion
-
-    #region Metodos y Funciones Privadas
-
-    public void ListaMenu()
-    {
-        MenuItem menu = new MenuItem();
-        BEMenu eMenu = new BEMenu();
-        BERolMenu eRolMenu = new BERolMenu();
-        DataTable dt = new DataTable();
-
-        eRolUsuario.Cod_Personal = Session["IDPERSONAL"].ToString();
-
-        try
-        {
-            eRolMenu.Id_Rol = Convert.ToInt32(Session["RolElegido"].ToString());
-            eMenu.Id_Padre = 0;
-
-            dt = objMenu.ConsultarMenu(eMenu, eRolMenu);
-            if (dt.Rows.Count > 0)
-            {
-                Session["NewRol"] = Convert.ToInt32(Session["RolElegido"].ToString());
-                CargaMenu(dt);
-            }
-        }
-        catch (Exception ex)
-        {
-            NetAjax.JsMensajeAlert(this.Page, ex.Message);
-        }
-    }
-
-    public void CargaMenu(DataTable dt)
-    {
-        for (int i = 0; i < dt.Rows.Count; i++)
-        {
-            MenuItem menuItem = new MenuItem();
-
-            menuItem.Value = dt.Rows[i]["ID"].ToString();
-            menuItem.Text = dt.Rows[i]["Nombre"].ToString();
-            menuItem.NavigateUrl = dt.Rows[i]["Pagina"].ToString();
-            menuItem.Selectable = false;
-            DataTable dt2 = new DataTable();
-            BEMenu eMenu = new BEMenu();
-            BERolMenu eRolMenu = new BERolMenu();
-            eRolMenu.Id_Rol = Convert.ToInt32(Session["NewRol"]);
-            eMenu.Id_Padre = Convert.ToInt32(dt.Rows[i].ItemArray[0].ToString());
-            dt2 = objMenu.ConsultarMenu(eMenu, eRolMenu);
-
-            NavigationMenu.Items.Add(menuItem);
-            AddMenuItem(menuItem, dt2);
-        }
-    }
-
-    public void AddMenuItem(MenuItem menuItem, DataTable dt)
-    {
-        for (int i = 0; i < dt.Rows.Count; i++)
-        {
-            MenuItem newmenuItem = new MenuItem();
-
-            newmenuItem.Value = dt.Rows[i].ItemArray[0].ToString();
-            newmenuItem.Text = dt.Rows[i].ItemArray[2].ToString();
-            newmenuItem.NavigateUrl = dt.Rows[i].ItemArray[3].ToString();
-
-            menuItem.ChildItems.Add(newmenuItem);
-        }
-    }
-
-    #endregion    
 }

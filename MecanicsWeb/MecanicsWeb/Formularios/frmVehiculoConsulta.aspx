@@ -87,7 +87,7 @@
                     <ContentTemplate>
                     <asp:GridView ID="dgVehiculo" runat="server" SkinID="Grid" AutoGenerateColumns="False"
                         Width="100%" EmptyDataText="No se encuentran datos" 
-                            onpageindexchanging="dgCliente_PageIndexChanging" 
+                            onpageindexchanging="dgCliente_PageIndexChanging"  
                             onrowcommand="dgCliente_RowCommand" onrowdatabound="dgCliente_RowDataBound" >
                         <HeaderStyle BackColor="#0B3861" Font-Bold="True" ForeColor="White" />
                         <Columns>
