@@ -21,6 +21,168 @@ public partial class Formularios_frmVehiculoConsulta {
     protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
     
     /// <summary>
+    /// tbCodigo control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbCodigo;
+    
+    /// <summary>
+    /// RequiredFieldValidator1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+    
+    /// <summary>
+    /// TextBox1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox TextBox1;
+    
+    /// <summary>
+    /// NombresRequired control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator NombresRequired;
+    
+    /// <summary>
+    /// TextBox2 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox TextBox2;
+    
+    /// <summary>
+    /// RequiredFieldValidator2 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+    
+    /// <summary>
+    /// tbColor control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbColor;
+    
+    /// <summary>
+    /// RequiredFieldValidator3 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+    
+    /// <summary>
+    /// ddlMarca control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.DropDownList ddlMarca;
+    
+    /// <summary>
+    /// TipoDocumentoRequired control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator TipoDocumentoRequired;
+    
+    /// <summary>
+    /// tbKilometraje control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbKilometraje;
+    
+    /// <summary>
+    /// NroDocumentoRequired control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator NroDocumentoRequired;
+    
+    /// <summary>
+    /// tbSerie control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbSerie;
+    
+    /// <summary>
+    /// RequiredFieldValidator5 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+    
+    /// <summary>
+    /// tbMotor control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbMotor;
+    
+    /// <summary>
+    /// RequiredFieldValidator6 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+    
+    /// <summary>
+    /// tbAnio control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbAnio;
+    
+    /// <summary>
+    /// RequiredFieldValidator7 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
+    
+    /// <summary>
     /// tbCliente control.
     /// </summary>
     /// <remarks>
@@ -30,15 +192,6 @@ public partial class Formularios_frmVehiculoConsulta {
     protected global::System.Web.UI.WebControls.TextBox tbCliente;
     
     /// <summary>
-    /// dllMarca control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.DropDownList dllMarca;
-    
-    /// <summary>
     /// tbPlaca control.
     /// </summary>
     /// <remarks>
@@ -46,15 +199,6 @@ public partial class Formularios_frmVehiculoConsulta {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.TextBox tbPlaca;
-    
-    /// <summary>
-    /// btnNuevo control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnNuevo;
     
     /// <summary>
     /// upBuscar control.
@@ -73,15 +217,6 @@ public partial class Formularios_frmVehiculoConsulta {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.Button btnBuscar;
-    
-    /// <summary>
-    /// btnCerrar control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnCerrar;
     
     /// <summary>
     /// UpLabel control.
