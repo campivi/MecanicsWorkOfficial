@@ -45,6 +45,7 @@
     <Compile Include="BLRoles.cs" />
     <Compile Include="BLRolUsuario.cs" />
     <Compile Include="BLUsuario.cs" />
+    <Compile Include="BLVehiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

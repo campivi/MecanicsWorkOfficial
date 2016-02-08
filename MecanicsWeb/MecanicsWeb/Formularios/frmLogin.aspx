@@ -144,18 +144,7 @@
                                                 SetFocusOnError="true" ToolTip="Seleccione Rol" ValidationGroup="RolesGrupo">*</asp:RequiredFieldValidator>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            Local:
-                                        </td>
-                                        <td>
-                                            <asp:DropDownList ID="ddlLocal" runat="server">
-                                            </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlLocal"
-                                                CssClass="failureNotification" ErrorMessage="Seleccione Local" InitialValue="0"
-                                                SetFocusOnError="true" ToolTip="Seleccione Local" ValidationGroup="RolesGrupo">*</asp:RequiredFieldValidator>
-                                        </td>
-                                    </tr>
+                                    
                                     <tr>
                                         <td align="right" colspan="4">
                                             <asp:Button ID="btnSeleccionar" runat="server" OnClick="btnSeleccionar_Click" Text="Seleccionar"

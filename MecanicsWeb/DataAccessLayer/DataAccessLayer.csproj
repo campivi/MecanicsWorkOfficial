@@ -47,6 +47,7 @@
     <Compile Include="DARoles.cs" />
     <Compile Include="DARolUsuario.cs" />
     <Compile Include="DAUsuario.cs" />
+    <Compile Include="DAVehiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

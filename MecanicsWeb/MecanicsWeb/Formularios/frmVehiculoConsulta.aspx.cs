@@ -20,8 +20,6 @@ public partial class Formularios_frmVehiculoConsulta : Base
 
     #endregion
 
-    #region Eventos del Formulario
-
     protected void Page_Load(object sender, EventArgs e)
     {
         try
@@ -38,10 +36,7 @@ public partial class Formularios_frmVehiculoConsulta : Base
         }
     }
 
-    protected void btnNuevo_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("fmrVehiculoMantenimiento.aspx");
-    }
+    #region BOTONES
 
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
@@ -57,7 +52,13 @@ public partial class Formularios_frmVehiculoConsulta : Base
 
     protected void btnCerrar_Click(object sender, EventArgs e)
     {
-        Response.Redirect("fmrFormularioInicio.aspx");
+        Response.Redirect("frmFormularioInicio.aspx");
+    }
+
+    protected void btnGuardar_Click(object sender, EventArgs e)
+    {
+        if (tbCodigo.Text == "") Mantenimiento(Constantes.ACCION.AGREGAR);
+        else Mantenimiento(Constantes.ACCION.MODIFICAR);
     }
 
     protected void dgCliente_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -78,16 +79,15 @@ public partial class Formularios_frmVehiculoConsulta : Base
 
     #endregion
 
-    #region Metodos y Funciones Privadas
+    #region MANTENIMIENTO/BUSQUEDA
 
     public void Buscar()
     {
         try
         {
-            eVehiculo.Cliente = tbCliente.Text.TrimEnd();
-            if (tbPlaca.Text == "") eVehiculo.Placa = "0";
-            else eVehiculo.NumDocumento = tbPlaca.Text.TrimEnd();
-            DataTable dtVehiculo = (DataTable)objVehiculo.ConsultarPersonal(eVehiculo);
+            eVehiculo.ID_Cliente = tbClienteSearch.Text.TrimEnd();
+            eVehiculo.Placa = tbPlacaSearch.Text.TrimEnd();
+            DataTable dtVehiculo = (DataTable)objVehiculo.ConsultarVehiculo(eVehiculo);
             dgVehiculo.DataSource = dtVehiculo;
             dgVehiculo.DataBind();
 
@@ -101,41 +101,64 @@ public partial class Formularios_frmVehiculoConsulta : Base
         }
     }
 
-    #endregion
-
-    #region Metodos Privados
-
     private void Mantenimiento(string ACCION)
     {
-        if (tbCodigo.Text == "") eVehiculo.Codigo = "0";
-        else eVehiculo.Codigo = tbCodigo.Text.TrimEnd();
-        eVehiculo.Placa = tbPlaca.Text.TrimEnd();
-        eVehiculo.Anio = tbAnio.Text.TrimEnd();
-        eVehiculo.Color = tbColor.Text.TrimEnd();
-        eVehiculo.Kilometraje = tbKilometraje.Text.TrimEnd();
-        eVehiculo.Marca = Convert.ToInt16(ddlMarca.SelectedValue);
-        eVehiculo.Serie = tbSerie.Text.TrimEnd();
-        eVehiculo.Motor = tbMotor.Text.TrimEnd();
-        eVehiculo.Cliente = tbCliente.Text.TrimEnd();
-
-        objVehiculo.GestionVehiculo(eVehiculo, ACCION);
-
-        if (ACCION.Equals(Constantes.GESTION.AGREGAR))
+        if (Verificar() == true)
         {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('Se insertó el registro con éxito')", true);
-        }
-        else
-        {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('Se modificó el registro con éxito')", true);
+            if (tbCodigo.Text == "") eVehiculo.ID_Vehiculo = "0";
+            else eVehiculo.ID_Vehiculo = tbCodigo.Text.TrimEnd();
+            eVehiculo.Placa = tbPlaca.Text.TrimEnd();
+            eVehiculo.Anio = tbAnio.Text.TrimEnd();
+            eVehiculo.Color = tbColor.Text.TrimEnd();
+            eVehiculo.Kilometraje = tbKilometraje.Text.TrimEnd();
+            eVehiculo.Marca = ddlMarca.SelectedValue;
+            eVehiculo.Nro_Serie = tbSerie.Text.TrimEnd();
+            eVehiculo.Nro_Motor = tbMotor.Text.TrimEnd();
+            eVehiculo.ID_Cliente = tbCliente.Text.TrimEnd();
+
+            objVehiculo.MantenimientoVehiculo(ACCION, eVehiculo);
+
+            if (ACCION.Equals(Constantes.ACCION.AGREGAR))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('Se insertó el registro con éxito')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('Se modificó el registro con éxito')", true);
+            }
         }
     }
 
     private void CargaMarca()
     {
         DataTable dtParametros = new DataTable();
-        EParametria.IDPadre = Constantes.PARAMETRIAS.RELACION;//MARCA
+        EParametria.IDPadre = Constantes.PARAMETRIAS.MARCA;
         dtParametros = objParametria.ConsultarParametriaCod(EParametria);
         Utility.CargaComboSeleccione(ddlMarca, dtParametros, "Ptr_Codigo", "Ptr_Descripcion");
+    }
+
+    private bool Verificar()
+    {
+        int cont = 0;
+        if (tbCliente.Text == "") { RFV1.Visible = true; cont++; }
+        else RFV1.Visible = false;
+        if (tbPlaca.Text == "") { RFV2.Visible = true; cont++; }
+        else RFV2.Visible = false;
+        if (tbColor.Text == "") { RFV3.Visible = true; cont++; }
+        else RFV3.Visible = false;
+        if (ddlMarca.Text == "") { RFV4.Visible = true; cont++; }
+        else RFV4.Visible = false;
+        if (tbKilometraje.Text == "") { RFV5.Visible = true; cont++; }
+        else RFV5.Visible = false;
+        if (tbSerie.Text == "") { RFV6.Visible = true; cont++; }
+        else RFV6.Visible = false;
+        if (tbMotor.Text == "") { RFV7.Visible = true; cont++; }
+        else RFV7.Visible = false;
+        if (tbAnio.Text == "") { RFV8.Visible = true; cont++; }
+        else RFV8.Visible = false;
+
+        if (cont > 0) return false;
+        else return true;
     }
 
     #endregion

@@ -28,7 +28,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
             {
                 lblUsuario.Text = "Bienvenido(a): " + Convert.ToString(Session["NOMBRE"]);
                 lblPerfil.Text = "Rol: " + Convert.ToString(Session["NombreRol"]);
-                FormInicial();
             }
         }
         catch (Exception)
@@ -39,18 +38,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void ibtChangePass_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("~/Formularios/fmrUsuarioMantenimiento.aspx", false);
+        Response.Redirect("~/Formularios/frmUsuarioMantenimiento.aspx", false);
     }
 
     protected void ibtSalir_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("~/Formularios/fmrLogin.aspx", false);
+        Response.Redirect("~/Formularios/frmLogin.aspx", false);
     }
-
-    public void FormInicial()
-    {
-        Response.Redirect("~/Formularios/fmrFormularioInicio.aspx", false);
-    }
+    
 
     #endregion
 }
