@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLMenu.cs" />
+    <Compile Include="BEMenu.cs" />
     <Compile Include="BLParametria.cs" />
     <Compile Include="BLRoles.cs" />
     <Compile Include="BLRolUsuario.cs" />
