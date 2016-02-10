@@ -75,6 +75,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Formularios\frmClienteConsulta.aspx" />
+    <Content Include="Formularios\frmContactoConsulta.aspx" />
     <Content Include="Formularios\frmFormularioInicio.aspx" />
     <Content Include="Formularios\frmLogin.aspx" />
     <Content Include="Formularios\frmVehiculoConsulta.aspx" />
@@ -102,6 +104,20 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App_Code\Constantes.cs" />
+    <Compile Include="Formularios\frmClienteConsulta.aspx.cs">
+      <DependentUpon>frmClienteConsulta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmClienteConsulta.aspx.designer.cs">
+      <DependentUpon>frmClienteConsulta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmContactoConsulta.aspx.cs">
+      <DependentUpon>frmContactoConsulta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmContactoConsulta.aspx.designer.cs">
+      <DependentUpon>frmContactoConsulta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmFormularioInicio.aspx.cs">
       <DependentUpon>frmFormularioInicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
