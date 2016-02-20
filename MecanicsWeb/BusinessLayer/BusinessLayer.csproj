@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BEMenu.cs" />
+    <Compile Include="BLCliente.cs" />
+    <Compile Include="BLContacto.cs" />
     <Compile Include="BLParametria.cs" />
     <Compile Include="BLRoles.cs" />
     <Compile Include="BLRolUsuario.cs" />

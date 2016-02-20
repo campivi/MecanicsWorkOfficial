@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DACliente.cs" />
     <Compile Include="DAConexionBD.cs" />
+    <Compile Include="DAContacto.cs" />
     <Compile Include="DAMenu.cs" />
     <Compile Include="DAParametria.cs" />
     <Compile Include="DARoles.cs" />

@@ -72,5 +72,36 @@ namespace DataAccessLayer
                 conn.Close();
             }
         }
+
+        public DataTable ListarVehiculo(BEVehiculo objEVehiculo)
+        {
+            DataTable dt = new DataTable();
+            MySqlConnection conn = new MySqlConnection("Server=127.0.0.1; Database=MECANICSWEB; Uid=Administrador; Pwd=admin");
+            MySqlCommand command = new MySqlCommand("`mecanicsweb`.`ListarVehiculo`", conn);
+
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(ObjSqlParameter("N_ID", objEVehiculo.ID_Vehiculo, ParameterDirection.Input, System.Data.DbType.String));
+            conn.Open();
+            IDataReader dr = command.ExecuteReader();
+            dt.Load(dr);
+            conn.Close();
+            return dt;
+        }
+
+        public void ActualizaVehiculo(BEVehiculo objEVehiculo)
+        {
+            MySqlConnection conn = new MySqlConnection("Server=127.0.0.1; Database=MECANICSWEB; Uid=Administrador; Pwd=admin");
+            MySqlCommand command = new MySqlCommand("`mecanicsweb`.`ActualizaVehiculo`", conn);
+
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(ObjSqlParameter("N_ID", objEVehiculo.ID_Vehiculo, ParameterDirection.Input, System.Data.DbType.Int16));
+            command.Parameters.Add(ObjSqlParameter("N_IDCliente", objEVehiculo.ID_Cliente, ParameterDirection.Input, System.Data.DbType.String));
+
+            conn.Open();
+
+            command.ExecuteNonQuery();
+            conn.Close();
+        }
     }
 }
+

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="frmClienteConsulta.aspx.cs" Inherits="Formularios_frmVehiculoConsulta" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="frmClienteConsulta.aspx.cs" Inherits="Formularios_frmClienteConsulta" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -6,29 +6,6 @@
     <style type="text/css">
         .FormTable {
             width: 467px;
-        }
-        .auto-style3 {
-            height: 28px;
-        }
-        .auto-style4 {
-            height: 23px;
-        }
-        .auto-style5 {
-            text-align: center;
-            height: 22px;
-        }
-        .auto-style6 {
-            margin-left: 0px;
-        }
-        .auto-style7 {
-            text-align: left;
-        }
-        .auto-style8 {
-            width: 90px;
-            text-align: left;
-        }
-        .auto-style9 {
-            width: 97%;
         }
     </style>
 </asp:Content>
@@ -43,32 +20,46 @@
                     <legend>MANTENIMIENTO CLIENTES</legend>
                     <div class="row">
                         <table width="100%">
+                            <asp:UpdatePanel ID="upDatos" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate> 
                             <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
+                                <td>Código:</td>
+                                <td>
+                                    <asp:TextBox ID="tbCodigo" runat="server" Enabled="false"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Contacto:</td>
+                                <td>
+                                    <asp:TextBox ID="tbContacto" runat="server" Width="200px"></asp:TextBox>    
+                                    <asp:Button ID="btnAgregarContacto" runat="server" text="Agregar" OnClick="btnBuscarContacto_Click" />
+                                    <asp:Button ID="btnDetalleContacto" runat="server" text="Detalle" Enabled="false" OnClick="btnDetalleContacto_Click" />
+                                    <asp:Label ID="RFV1" runat="server" Text="*"  CssClass="failureNotification" Visible="false" ToolTip="El Contacto es Obligatorio"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Vehículo:</td>
+                                <td>
+                                    <asp:TextBox ID="tbVehiculo" runat="server" Width="200px" ></asp:TextBox>    
+                                    <asp:Button ID="btnAgregarVehiculo" runat="server" text="Agregar" OnClick="btnBuscarVehiculo_Click" />
+                                    <asp:Button ID="btnDetalleVehiculo" runat="server" text="Detalle" Enabled="false" OnClick="btnDetalleVehiculo_Click" />
+                                    <asp:Label ID="RFV2" runat="server" Text="*"  CssClass="failureNotification" Visible="false" ToolTip="El Vehiculo es Obligatorio"></asp:Label>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
                                     Tipo:</td>
                                 <td>
-                                    <asp:DropDownList ID="ddlTipo" runat="server" Height="18px" Width="125px">
-                                        <asp:ListItem></asp:ListItem>
-                                        <asp:ListItem>NATURAL</asp:ListItem>
-                                        <asp:ListItem>JURÍDICO</asp:ListItem>
-                                    </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbCodigo"
-                                     ErrorMessage="El código es Obligatorio" CssClass="failureNotification" SetFocusOnError="true" 
-                                     ToolTip="El código es Obligatorio">*</asp:RequiredFieldValidator>                           
+                                    <asp:DropDownList ID="ddlTipo" runat="server" Enabled="false" Width="125px"></asp:DropDownList>                        
+                                    <asp:Label ID="RFV3" runat="server" Text="*"  CssClass="failureNotification" Visible="false" ToolTip="El Tipo de Cliente es Obligatorio"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     Nombre:</td>
                                 <td>
-                                    <asp:TextBox ID="tbNombre" runat="server" Width="200px" ></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="NombresRequired" runat="server" ControlToValidate="tbCliente"
-                                     ErrorMessage="El Cliente es Obligatorio" CssClass="failureNotification" SetFocusOnError="true" 
-                                     ToolTip="El Cliente es Obligatorio">*</asp:RequiredFieldValidator>                           
+                                    <asp:TextBox ID="tbNombre" runat="server" Enabled="false" Width="200px" ></asp:TextBox>
+                                    <asp:Label ID="RFV4" runat="server" Text="*"  CssClass="failureNotification" Visible="false" ToolTip="El Nombre es Obligatorio"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -76,7 +67,8 @@
                                     Razón Social:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbRazonSocial" runat="server" Width="200px" ></asp:TextBox>
+                                    <asp:TextBox ID="tbRazonSocial" runat="server" Enabled="false" Width="200px" ></asp:TextBox>
+                                    <asp:Label ID="RFV5" runat="server" Text="*"  CssClass="failureNotification" Visible="false" ToolTip="El Razon Social es Obligatorio"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -84,85 +76,69 @@
                                     DNI/RUC:
                                 </td>
                                 <td>
-                                   <asp:TextBox ID="tbID" runat="server" Width="200px" ></asp:TextBox>
-                                   <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbColor"
-                                     ErrorMessage="El Color Materno es Obligatorio" CssClass="failureNotification" SetFocusOnError="true" 
-                                     ToolTip="El Color Materno es Obligatorio">*</asp:RequiredFieldValidator>
+                                   <asp:TextBox ID="tbDocumento" runat="server" Enabled="false" Width="200px" MaxLength="12"></asp:TextBox>
+                                   <asp:Label ID="RFV6" runat="server" Text="*"  CssClass="failureNotification" Visible="false" ToolTip="El Documento es Obligatorio"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style3">
+                                <td>
                                     Dirección:
                                 </td>
-                                <td class="auto-style3">
-                                    <asp:TextBox ID="tbDireccion" runat="server" Width="200px" MaxLength="10" ></asp:TextBox>
+                                <td>
+                                    <asp:TextBox ID="tbDireccion" runat="server" Enabled="false" Width="200px"  ></asp:TextBox>
+                                    <asp:Label ID="RFV7" runat="server" Text="*"  CssClass="failureNotification" Visible="false" ToolTip="La Dirección es Obligatoria"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     Distrito:</td>
                                 <td>
-                                    <asp:DropDownList ID="ddlDistrito" runat="server" Height="18px" Width="130px">
-                                        <asp:ListItem></asp:ListItem>
-                                        <asp:ListItem>Lima</asp:ListItem>
-                                        <asp:ListItem>Callao</asp:ListItem>
-                                        <asp:ListItem>San Borja</asp:ListItem>
-                                        <asp:ListItem>Miraflores</asp:ListItem>
-                                    </asp:DropDownList>
+                                    <asp:TextBox ID="tbDistrito" runat="server" Enabled="false" Width="200px" ></asp:TextBox>
+                                    <asp:Label ID="RFV8" runat="server" Text="*"  CssClass="failureNotification" Visible="false" ToolTip="El Distrito es Obligatorio"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     Teléfono:</td>
                                 <td>
-                                   <asp:TextBox ID="tbTelefono" runat="server" Width="200px" MaxLength="7"></asp:TextBox>     
+                                   <asp:TextBox ID="tbTelefono" runat="server" Enabled="false" Width="200px" MaxLength="9"></asp:TextBox>
+                                   <asp:Label ID="RFV9" runat="server" Text="*"  CssClass="failureNotification" Visible="false" ToolTip="El Teléfono es Obligatorio"></asp:Label>     
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     Email</td>
                                 <td>
-                                   <asp:TextBox ID="tbEmail" runat="server" Width="200px" ></asp:TextBox>     
+                                   <asp:TextBox ID="tbEmail" runat="server" Enabled="false" Width="200px" ></asp:TextBox>
+                                    <asp:Label ID="RFV10" runat="server" Text="*"  CssClass="failureNotification" Visible="false" ToolTip="El Email es Obligatorio"></asp:Label>     
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     Pagina Web:</td>
                                 <td>
-                                   <asp:TextBox ID="tbPaginaWeb" runat="server" Width="200px" MaxLength="9"></asp:TextBox>    
+                                   <asp:TextBox ID="tbPaginaWeb" runat="server" Enabled="false" Width="200px" ></asp:TextBox>
+                                    <asp:Label ID="RFV11" runat="server" Text="*"  CssClass="failureNotification" Visible="false" ToolTip="La Página Web es Obligatoria"></asp:Label>    
                                 </td>  
                             </tr>
                             <tr>
-                                <td>Contacto:</td>
-                                <td>
-                                   <asp:TextBox ID="tbContacto" runat="server" Width="200px" MaxLength="9"></asp:TextBox>    
-                                    <asp:Button ID="btAgregarContacto" runat="server" Text="Agregar" />
-                                </td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td>Vehículo:</td>
-                                <td>
-                                   <asp:TextBox ID="tbVehiculo" runat="server" Width="200px" MaxLength="9"></asp:TextBox>    
-                                    <asp:Button ID="btnAgregarVehiculo" runat="server" Text="Agregar" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style4"></td>
-                                <td class="auto-style4">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style5" colspan="2">
-                                    <asp:Button ID="btnAgregar" runat="server" Text="Agregar" />
-                                    <asp:Button ID="btnEditar" runat="server" Text="Editar" />
-                                    <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" />
-                                    <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" />
-                                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" />
+                                <td>&nbsp;</td>
+                                <td align="right">
+                                    <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" onclick="btnNuevo_Click" />
+                                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" onclick="btnGuardar_Click" />
+                                    <asp:Button ID="btnCerrar" runat="server" Text="Cerrar" onclick="btnCerrar_Click" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                             </tr>
+                            </ContentTemplate>
+                            </asp:UpdatePanel>
                         </table>
                     </div>
               </fieldset> 
@@ -173,25 +149,19 @@
                     <div class="row">
                         <table width="100%">
                             <tr>
-                                <td class="auto-style8">
-                                    Buscar por:</td>
+                                <td> Nombre:</td>
                                 <td>
-                                    <asp:DropDownList ID="ddlBuscar" runat="server" CssClass="auto-style6" Height="16px" Width="167px">
-                                        <asp:ListItem></asp:ListItem>
-                                        <asp:ListItem>Nombre</asp:ListItem>
-                                        <asp:ListItem>DNI/RUC</asp:ListItem>
-                                    </asp:DropDownList>
+                                    <asp:TextBox ID="tbNombreSearch" runat="server" Width="250px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style8">
-                                    &nbsp;</td>
-                                <td class="auto-style7">
-                                    <asp:TextBox ID="tbBuscar" runat="server" Width="230px"></asp:TextBox>
+                                <td> DNI/RUC:</td>
+                                <td>
+                                    <asp:TextBox ID="tbDocumentoSearch" runat="server" Width="200px"></asp:TextBox>
                                 </td>                      
                             </tr>  
                          </table>
-                         <table width="50%">                        
+                         <table width="100%">                        
                              <tr>
                                 <td align="right" width="72%"></td> 
                                 <td align="right">
@@ -206,19 +176,9 @@
                          </table>
                         </div>
                 </fieldset>
-                <table class="auto-style9">
+                <table width="100%">
                     <tr>
                         <td>
-                            <asp:UpdatePanel ID="UpLabel" runat="server" UpdateMode="Conditional">
-                                <ContentTemplate>    
-                                    <fieldset>
-                                        <legend>Resultados de la Búsqueda</legend>
-                                        <div class="row">
-                                            <asp:Label ID="lblContador" runat="server" Text=""></asp:Label>
-                                        </div>
-                                    </fieldset>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
                             <br />
                         </td>
                     </tr>
@@ -227,7 +187,7 @@
                             <div class="grilla">
                                 <asp:UpdatePanel ID="up" runat="server" UpdateMode="Conditional" >
                                 <ContentTemplate>
-                                <asp:GridView ID="dgVehiculo" runat="server" SkinID="Grid" AutoGenerateColumns="False"
+                                <asp:GridView ID="dgCliente" runat="server" SkinID="Grid" AutoGenerateColumns="False"
                                     Width="100%" EmptyDataText="No se encuentran datos" 
                                         onpageindexchanging="dgCliente_PageIndexChanging"  
                                         onrowcommand="dgCliente_RowCommand" onrowdatabound="dgCliente_RowDataBound" >
@@ -240,12 +200,14 @@
                                                 </asp:ImageButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>   
-                                        <asp:TemplateField HeaderText="Nombre">
+                                        <asp:TemplateField HeaderText="ID">
                                             <ItemTemplate>
                                                 <asp:Label ID="lblID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ID") %>'></asp:Label>
                                             </ItemTemplate>
-                                        </asp:TemplateField>                                                            
-                                        <asp:BoundField DataField="Cliente" HeaderText="DNI/RUC" ItemStyle-Width="250px"  >
+                                        </asp:TemplateField>   
+                                        <asp:BoundField DataField="Nombre" HeaderText="Nombre"></asp:BoundField>     
+                                        <asp:BoundField DataField="Tipo" HeaderText="Tipo"></asp:BoundField>                                                      
+                                        <asp:BoundField DataField="Documento" HeaderText="DNI/RUC" ItemStyle-Width="250px"  >
                                         <ItemStyle Width="250px" />
                                         </asp:BoundField>
                                     </Columns>
@@ -259,6 +221,4 @@
             </td>
         </tr>
     </table>
-
-    
 </asp:Content>

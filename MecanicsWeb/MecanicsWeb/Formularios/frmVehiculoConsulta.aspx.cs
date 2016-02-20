@@ -27,6 +27,30 @@ public partial class Formularios_frmVehiculoConsulta : Base
             if (!Page.IsPostBack)
             {
                 CargaMarca();
+
+                if (Session["FLAG"].ToString() != "0")
+                {
+                    btnGuardar.Enabled = true;
+                }
+
+                    if (!(Request.QueryString["Cod"] == null))
+                {
+                    eVehiculo.ID_Vehiculo = Request.QueryString["Cod"].ToString();
+                    DataTable dtVehiculo = new DataTable();
+                    dtVehiculo = objVehiculo.ListarVehiculo(eVehiculo);
+                    DataRow dr = dtVehiculo.Rows[0];
+
+                    tbCodigo.Text = dr["ID"].ToString();
+                    tbPlaca.Text = dr["Placa"].ToString();
+                    tbColor.Text = dr["Color"].ToString();
+                    ddlMarca.SelectedValue = dr["Marca"].ToString();
+                    tbKilometraje.Text = dr["Kilometraje"].ToString();
+                    tbSerie.Text = dr["Nro_Serie"].ToString();
+                    tbMotor.Text = dr["Nro_Motor"].ToString();
+                    tbAnio.Text = dr["Anio"].ToString();
+
+                    btnGuardar.Enabled = true;
+                }
             }
 
         }
@@ -52,6 +76,9 @@ public partial class Formularios_frmVehiculoConsulta : Base
 
     protected void btnCerrar_Click(object sender, EventArgs e)
     {
+        Session["Cliente_IDContacto"] = "0";
+        Session["Cliente_IDVehiculo"] = "0";
+        Session["Cliente_IDCliente"] = "";
         Response.Redirect("frmFormularioInicio.aspx");
     }
 
@@ -59,6 +86,11 @@ public partial class Formularios_frmVehiculoConsulta : Base
     {
         if (tbCodigo.Text == "") Mantenimiento(Constantes.ACCION.AGREGAR);
         else Mantenimiento(Constantes.ACCION.MODIFICAR);
+    }
+
+    protected void btnNuevo_Click(object sender, EventArgs e)
+    {
+        EmptyText();
     }
 
     protected void dgCliente_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -71,7 +103,16 @@ public partial class Formularios_frmVehiculoConsulta : Base
     {
         if (e.CommandName.Equals("Modificar"))
         {
-            Response.Redirect("fmrMantenimientoPersonal.aspx?Cod=" + e.CommandArgument.ToString());
+            Response.Redirect("frmVehiculoConsulta.aspx?Cod=" + e.CommandArgument.ToString());
+        }
+        if (e.CommandName.Equals("Seleccionar"))
+        {
+            if (Session["FLAG"].ToString() != "0")
+            {
+                Session["Cliente_IDVehiculo"] = e.CommandArgument.ToString();
+                Session["FLAG"] = "0";
+                Response.Redirect("frmClienteConsulta.aspx");
+            }
         }
     }
 
@@ -91,9 +132,7 @@ public partial class Formularios_frmVehiculoConsulta : Base
             dgVehiculo.DataSource = dtVehiculo;
             dgVehiculo.DataBind();
 
-            lblContador.Text = "Registros encontrados (" + dtVehiculo.Rows.Count.ToString() + ")";
             up.Update();
-            UpLabel.Update();
         }
         catch (Exception ex)
         {
@@ -107,6 +146,7 @@ public partial class Formularios_frmVehiculoConsulta : Base
         {
             if (tbCodigo.Text == "") eVehiculo.ID_Vehiculo = "0";
             else eVehiculo.ID_Vehiculo = tbCodigo.Text.TrimEnd();
+            eVehiculo.ID_Cliente = "0";
             eVehiculo.Placa = tbPlaca.Text.TrimEnd();
             eVehiculo.Anio = tbAnio.Text.TrimEnd();
             eVehiculo.Color = tbColor.Text.TrimEnd();
@@ -114,7 +154,6 @@ public partial class Formularios_frmVehiculoConsulta : Base
             eVehiculo.Marca = ddlMarca.SelectedValue;
             eVehiculo.Nro_Serie = tbSerie.Text.TrimEnd();
             eVehiculo.Nro_Motor = tbMotor.Text.TrimEnd();
-            eVehiculo.ID_Cliente = tbCliente.Text.TrimEnd();
 
             objVehiculo.MantenimientoVehiculo(ACCION, eVehiculo);
 
@@ -126,6 +165,8 @@ public partial class Formularios_frmVehiculoConsulta : Base
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('Se modificó el registro con éxito')", true);
             }
+
+            EmptyText();
         }
     }
 
@@ -140,8 +181,6 @@ public partial class Formularios_frmVehiculoConsulta : Base
     private bool Verificar()
     {
         int cont = 0;
-        if (tbCliente.Text == "") { RFV1.Visible = true; cont++; }
-        else RFV1.Visible = false;
         if (tbPlaca.Text == "") { RFV2.Visible = true; cont++; }
         else RFV2.Visible = false;
         if (tbColor.Text == "") { RFV3.Visible = true; cont++; }
@@ -157,8 +196,24 @@ public partial class Formularios_frmVehiculoConsulta : Base
         if (tbAnio.Text == "") { RFV8.Visible = true; cont++; }
         else RFV8.Visible = false;
 
+        upDatos.Update();
         if (cont > 0) return false;
         else return true;
+        
+    }
+
+    private void EmptyText()
+    {
+        tbCodigo.Text = "";
+        tbPlaca.Text = "";
+        tbColor.Text = "";
+        CargaMarca();
+        tbKilometraje.Text = "";
+        tbSerie.Text = "";
+        tbMotor.Text = "";
+        tbAnio.Text = "";
+
+        btnGuardar.Enabled = true;
     }
 
     #endregion

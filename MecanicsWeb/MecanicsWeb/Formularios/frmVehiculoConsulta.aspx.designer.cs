@@ -21,6 +21,15 @@ public partial class Formularios_frmVehiculoConsulta {
     protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
     
     /// <summary>
+    /// upDatos control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.UpdatePanel upDatos;
+    
+    /// <summary>
     /// tbCodigo control.
     /// </summary>
     /// <remarks>
@@ -28,24 +37,6 @@ public partial class Formularios_frmVehiculoConsulta {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.TextBox tbCodigo;
-    
-    /// <summary>
-    /// tbCliente control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbCliente;
-    
-    /// <summary>
-    /// RFV1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label RFV1;
     
     /// <summary>
     /// tbPlaca control.
@@ -174,6 +165,15 @@ public partial class Formularios_frmVehiculoConsulta {
     protected global::System.Web.UI.WebControls.Label RFV8;
     
     /// <summary>
+    /// btnNuevo control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnNuevo;
+    
+    /// <summary>
     /// btnGuardar control.
     /// </summary>
     /// <remarks>
@@ -226,24 +226,6 @@ public partial class Formularios_frmVehiculoConsulta {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.Button btnBuscar;
-    
-    /// <summary>
-    /// UpLabel control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.UpdatePanel UpLabel;
-    
-    /// <summary>
-    /// lblContador control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblContador;
     
     /// <summary>
     /// up control.

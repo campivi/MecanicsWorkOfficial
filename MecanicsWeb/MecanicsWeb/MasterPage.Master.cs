@@ -38,7 +38,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void ibtChangePass_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("~/Formularios/frmUsuarioMantenimiento.aspx", false);
+        //Response.Redirect("~/Formularios/frmUsuarioMantenimiento.aspx", false);
     }
 
     protected void ibtSalir_Click(object sender, ImageClickEventArgs e)

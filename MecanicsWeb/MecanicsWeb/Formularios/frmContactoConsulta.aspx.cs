@@ -9,18 +9,16 @@ using BusinessEntities;
 using DataAccessLayer;
 using System.Data;
 
-public partial class Formularios_frmVehiculoConsulta : Base
+public partial class Formularios_frmContactoConsulta : Base
 {
     #region Inicialización
 
     BLParametria objParametria = new BLParametria();
     BEParametria EParametria = new BEParametria();
-    BEVehiculo eVehiculo = new BEVehiculo();
-    BLVehiculo objVehiculo = new BLVehiculo();
+    BEContacto eContacto = new BEContacto();
+    BLContacto objContacto = new BLContacto();
 
     #endregion
-
-    #region Eventos del Formulario
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -28,8 +26,31 @@ public partial class Formularios_frmVehiculoConsulta : Base
         {
             if (!Page.IsPostBack)
             {
-                CargaMarca();
-            }
+                CargaTipoDocumento();
+
+                if (Session["FLAG"].ToString() != "0")
+                {
+                    btnGuardar.Enabled = true;
+                }
+
+                    if (!(Request.QueryString["Cod"] == null))
+                {
+                    eContacto.ID_Contacto = Request.QueryString["Cod"].ToString();
+                    DataTable dtContacto = new DataTable();
+                    dtContacto = objContacto.ListarContacto(eContacto);
+                    DataRow dr = dtContacto.Rows[0];
+
+                    tbCodigo.Text = dr["ID"].ToString();
+                    tbNombre.Text = dr["Nombre"].ToString();
+                    ddlTipoDocumento.SelectedValue = dr["TipoDocumento"].ToString();
+                    tbDocumento.Text = dr["Documento"].ToString();
+                    tbTelefono.Text = dr["Telefono"].ToString();
+                    tbCelular.Text = dr["Celular"].ToString();
+                    
+                    btnGuardar.Enabled = true;
+                }
+
+             }
 
         }
         catch (Exception ex)
@@ -38,10 +59,7 @@ public partial class Formularios_frmVehiculoConsulta : Base
         }
     }
 
-    protected void btnNuevo_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("fmrVehiculoMantenimiento.aspx");
-    }
+    #region BOTONES
 
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
@@ -55,14 +73,28 @@ public partial class Formularios_frmVehiculoConsulta : Base
         }
     }
 
+    protected void btnNuevo_Click(object sender, EventArgs e)
+    {
+        EmptyText();
+    }
+
     protected void btnCerrar_Click(object sender, EventArgs e)
     {
-        Response.Redirect("fmrFormularioInicio.aspx");
+        Session["Cliente_IDContacto"] = "0";
+        Session["Cliente_IDVehiculo"] = "0";
+        Session["Cliente_IDCliente"] = "";
+        Response.Redirect("frmFormularioInicio.aspx");
+    }
+
+    protected void btnGuardar_Click(object sender, EventArgs e)
+    {
+        if (tbCodigo.Text == "") Mantenimiento(Constantes.ACCION.AGREGAR);
+        else Mantenimiento(Constantes.ACCION.MODIFICAR);
     }
 
     protected void dgCliente_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
-        dgVehiculo.PageIndex = e.NewPageIndex;
+        dgContacto.PageIndex = e.NewPageIndex;
         Buscar();
     }
 
@@ -70,7 +102,16 @@ public partial class Formularios_frmVehiculoConsulta : Base
     {
         if (e.CommandName.Equals("Modificar"))
         {
-            Response.Redirect("fmrMantenimientoPersonal.aspx?Cod=" + e.CommandArgument.ToString());
+            Response.Redirect("frmContactoConsulta.aspx?Cod=" + e.CommandArgument.ToString());
+        }
+        if (e.CommandName.Equals("Seleccionar"))
+        {
+            if (Session["FLAG"].ToString() != "0")
+            {
+                Session["Cliente_IDContacto"] = e.CommandArgument.ToString();
+                Session["FLAG"] = "0";
+                Response.Redirect("frmClienteConsulta.aspx");
+            }
         }
     }
 
@@ -78,22 +119,19 @@ public partial class Formularios_frmVehiculoConsulta : Base
 
     #endregion
 
-    #region Metodos y Funciones Privadas
+    #region MANTENIMIENTO/BUSQUEDA
 
     public void Buscar()
     {
         try
         {
-            eVehiculo.Cliente = tbCliente.Text.TrimEnd();
-            if (tbPlaca.Text == "") eVehiculo.Placa = "0";
-            else eVehiculo.NumDocumento = tbPlaca.Text.TrimEnd();
-            DataTable dtVehiculo = (DataTable)objVehiculo.ConsultarPersonal(eVehiculo);
-            dgVehiculo.DataSource = dtVehiculo;
-            dgVehiculo.DataBind();
+            eContacto.Nombre = tbNombreSearch.Text.TrimEnd();
+            eContacto.Documento = tbDocumentoSearch.Text.TrimEnd();
+            DataTable dtContacto = (DataTable)objContacto.ConsultarContacto(eContacto);
+            dgContacto.DataSource = dtContacto;
+            dgContacto.DataBind();
 
-            lblContador.Text = "Registros encontrados (" + dtVehiculo.Rows.Count.ToString() + ")";
             up.Update();
-            UpLabel.Update();
         }
         catch (Exception ex)
         {
@@ -101,41 +139,71 @@ public partial class Formularios_frmVehiculoConsulta : Base
         }
     }
 
-    #endregion
-
-    #region Metodos Privados
-
     private void Mantenimiento(string ACCION)
     {
-        if (tbCodigo.Text == "") eVehiculo.Codigo = "0";
-        else eVehiculo.Codigo = tbCodigo.Text.TrimEnd();
-        eVehiculo.Placa = tbPlaca.Text.TrimEnd();
-        eVehiculo.Anio = tbAnio.Text.TrimEnd();
-        eVehiculo.Color = tbColor.Text.TrimEnd();
-        eVehiculo.Kilometraje = tbKilometraje.Text.TrimEnd();
-        eVehiculo.Marca = Convert.ToInt16(ddlMarca.SelectedValue);
-        eVehiculo.Serie = tbSerie.Text.TrimEnd();
-        eVehiculo.Motor = tbMotor.Text.TrimEnd();
-        eVehiculo.Cliente = tbCliente.Text.TrimEnd();
-
-        objVehiculo.GestionVehiculo(eVehiculo, ACCION);
-
-        if (ACCION.Equals(Constantes.GESTION.AGREGAR))
+        if (Verificar() == true)
         {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('Se insertó el registro con éxito')", true);
-        }
-        else
-        {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('Se modificó el registro con éxito')", true);
+            if (tbCodigo.Text == "") eContacto.ID_Contacto = "0";
+            else eContacto.ID_Contacto = tbCodigo.Text.TrimEnd();
+            eContacto.ID_Cliente = "0";
+            eContacto.Nombre = tbNombre.Text.TrimEnd();
+            eContacto.TipoDocumento = ddlTipoDocumento.SelectedValue;
+            eContacto.Documento = tbDocumento.Text.TrimEnd();
+            eContacto.Telefono = tbTelefono.Text.TrimEnd();
+            eContacto.Celular = tbCelular.Text.TrimEnd();
+
+            objContacto.MantenimientoContacto(ACCION, eContacto);
+            
+            if (ACCION.Equals(Constantes.ACCION.AGREGAR))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('Se insertó el registro con éxito')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('Se modificó el registro con éxito')", true);
+            }
+
+            EmptyText();
         }
     }
 
-    private void CargaMarca()
+    private void CargaTipoDocumento()
     {
         DataTable dtParametros = new DataTable();
-        EParametria.IDPadre = Constantes.PARAMETRIAS.RELACION;//MARCA
+        EParametria.IDPadre = Constantes.PARAMETRIAS.TIPO_DOC;
         dtParametros = objParametria.ConsultarParametriaCod(EParametria);
-        Utility.CargaComboSeleccione(ddlMarca, dtParametros, "Ptr_Codigo", "Ptr_Descripcion");
+        Utility.CargaComboSeleccione(ddlTipoDocumento, dtParametros, "Ptr_Codigo", "Ptr_Descripcion");
+    }
+
+    private bool Verificar()
+    {
+        int cont = 0;
+        
+        if (tbNombre.Text == "") { RFV2.Visible = true; cont++; }
+        else RFV2.Visible = false;
+        if (ddlTipoDocumento.Text == "") { RFV3.Visible = true; cont++; }
+        else RFV3.Visible = false;
+        if (tbDocumento.Text == "") { RFV4.Visible = true; cont++; }
+        else RFV4.Visible = false;
+        if (tbTelefono.Text == "") { RFV5.Visible = true; cont++; }
+        else RFV5.Visible = false;
+        if (tbCelular.Text == "") { RFV6.Visible = true; cont++; }
+        else RFV6.Visible = false;
+
+        upDatos.Update();
+        if (cont > 0) return false;
+        else return true;
+    }
+
+    private void EmptyText()
+    {
+        tbCodigo.Text = "";
+        tbNombre.Text = "";
+        CargaTipoDocumento();
+        tbDocumento.Text = "";
+        tbTelefono.Text = "";
+        tbCelular.Text = "";
+        btnGuardar.Enabled = false;
     }
 
     #endregion

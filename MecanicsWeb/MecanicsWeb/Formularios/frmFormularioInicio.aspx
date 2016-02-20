@@ -15,7 +15,7 @@
     
     <table class="auto-style1">
         <tr>
-            <td class="auto-style3" >
+            <td class="auto-style3" style="background-color:#3a4f63 ">
                 <div class="clear hideSkiplink">
                         <asp:Menu ID="NavigationMenu" MaximumDynamicDisplayLevels="2" runat="server" CssClass="menu"
                         EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">

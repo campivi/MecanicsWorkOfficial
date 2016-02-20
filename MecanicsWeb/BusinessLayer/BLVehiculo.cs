@@ -22,5 +22,15 @@ namespace BusinessLayer
         {
             return objVehiculo.MantenimientoVehiculo(ACCION, objEVehiculo);
         }
+
+        public DataTable ListarVehiculo(BEVehiculo objEVehiculo)
+        {
+            return objVehiculo.ListarVehiculo(objEVehiculo);
+        }
+
+        public void ActualizaVehiculo(BEVehiculo objEVehiculo)
+        {
+            objVehiculo.ActualizaVehiculo(objEVehiculo);
+        }
     }
 }

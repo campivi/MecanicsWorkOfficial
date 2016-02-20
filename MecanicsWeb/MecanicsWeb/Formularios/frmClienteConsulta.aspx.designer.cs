@@ -9,7 +9,7 @@
 
 
 
-public partial class Formularios_frmVehiculoConsulta {
+public partial class Formularios_frmClienteConsulta {
     
     /// <summary>
     /// ToolkitScriptManager1 control.
@@ -21,112 +21,22 @@ public partial class Formularios_frmVehiculoConsulta {
     protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
     
     /// <summary>
-    /// ddlTipo control.
+    /// upDatos control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.DropDownList ddlTipo;
+    protected global::System.Web.UI.UpdatePanel upDatos;
     
     /// <summary>
-    /// RequiredFieldValidator1 control.
+    /// tbCodigo control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-    
-    /// <summary>
-    /// tbNombre control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbNombre;
-    
-    /// <summary>
-    /// NombresRequired control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator NombresRequired;
-    
-    /// <summary>
-    /// tbRazonSocial control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbRazonSocial;
-    
-    /// <summary>
-    /// tbID control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbID;
-    
-    /// <summary>
-    /// RequiredFieldValidator3 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
-    
-    /// <summary>
-    /// tbDireccion control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbDireccion;
-    
-    /// <summary>
-    /// ddlDistrito control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.DropDownList ddlDistrito;
-    
-    /// <summary>
-    /// tbTelefono control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbTelefono;
-    
-    /// <summary>
-    /// tbEmail control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbEmail;
-    
-    /// <summary>
-    /// tbPaginaWeb control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbPaginaWeb;
+    protected global::System.Web.UI.WebControls.TextBox tbCodigo;
     
     /// <summary>
     /// tbContacto control.
@@ -138,13 +48,31 @@ public partial class Formularios_frmVehiculoConsulta {
     protected global::System.Web.UI.WebControls.TextBox tbContacto;
     
     /// <summary>
-    /// btAgregarContacto control.
+    /// btnAgregarContacto control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btAgregarContacto;
+    protected global::System.Web.UI.WebControls.Button btnAgregarContacto;
+    
+    /// <summary>
+    /// btnDetalleContacto control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnDetalleContacto;
+    
+    /// <summary>
+    /// RFV1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label RFV1;
     
     /// <summary>
     /// tbVehiculo control.
@@ -165,67 +93,229 @@ public partial class Formularios_frmVehiculoConsulta {
     protected global::System.Web.UI.WebControls.Button btnAgregarVehiculo;
     
     /// <summary>
-    /// btnAgregar control.
+    /// btnDetalleVehiculo control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnAgregar;
+    protected global::System.Web.UI.WebControls.Button btnDetalleVehiculo;
     
     /// <summary>
-    /// btnEditar control.
+    /// RFV2 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnEditar;
+    protected global::System.Web.UI.WebControls.Label RFV2;
     
     /// <summary>
-    /// btnEliminar control.
+    /// ddlTipo control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnEliminar;
+    protected global::System.Web.UI.WebControls.DropDownList ddlTipo;
     
     /// <summary>
-    /// btnAceptar control.
+    /// RFV3 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnAceptar;
+    protected global::System.Web.UI.WebControls.Label RFV3;
     
     /// <summary>
-    /// btnCancelar control.
+    /// tbNombre control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnCancelar;
+    protected global::System.Web.UI.WebControls.TextBox tbNombre;
     
     /// <summary>
-    /// ddlBuscar control.
+    /// RFV4 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.DropDownList ddlBuscar;
+    protected global::System.Web.UI.WebControls.Label RFV4;
     
     /// <summary>
-    /// tbBuscar control.
+    /// tbRazonSocial control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbBuscar;
+    protected global::System.Web.UI.WebControls.TextBox tbRazonSocial;
+    
+    /// <summary>
+    /// RFV5 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label RFV5;
+    
+    /// <summary>
+    /// tbDocumento control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbDocumento;
+    
+    /// <summary>
+    /// RFV6 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label RFV6;
+    
+    /// <summary>
+    /// tbDireccion control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbDireccion;
+    
+    /// <summary>
+    /// RFV7 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label RFV7;
+    
+    /// <summary>
+    /// tbDistrito control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbDistrito;
+    
+    /// <summary>
+    /// RFV8 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label RFV8;
+    
+    /// <summary>
+    /// tbTelefono control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbTelefono;
+    
+    /// <summary>
+    /// RFV9 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label RFV9;
+    
+    /// <summary>
+    /// tbEmail control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbEmail;
+    
+    /// <summary>
+    /// RFV10 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label RFV10;
+    
+    /// <summary>
+    /// tbPaginaWeb control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbPaginaWeb;
+    
+    /// <summary>
+    /// RFV11 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label RFV11;
+    
+    /// <summary>
+    /// btnNuevo control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnNuevo;
+    
+    /// <summary>
+    /// btnGuardar control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnGuardar;
+    
+    /// <summary>
+    /// btnCerrar control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnCerrar;
+    
+    /// <summary>
+    /// tbNombreSearch control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbNombreSearch;
+    
+    /// <summary>
+    /// tbDocumentoSearch control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox tbDocumentoSearch;
     
     /// <summary>
     /// upBuscar control.
@@ -246,24 +336,6 @@ public partial class Formularios_frmVehiculoConsulta {
     protected global::System.Web.UI.WebControls.Button btnBuscar;
     
     /// <summary>
-    /// UpLabel control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.UpdatePanel UpLabel;
-    
-    /// <summary>
-    /// lblContador control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblContador;
-    
-    /// <summary>
     /// up control.
     /// </summary>
     /// <remarks>
@@ -273,11 +345,11 @@ public partial class Formularios_frmVehiculoConsulta {
     protected global::System.Web.UI.UpdatePanel up;
     
     /// <summary>
-    /// dgVehiculo control.
+    /// dgCliente control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.GridView dgVehiculo;
+    protected global::System.Web.UI.WebControls.GridView dgCliente;
 }

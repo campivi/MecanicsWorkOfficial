@@ -23,6 +23,7 @@ public class Constantes
         public const int GENERO = 8;
         public const int ESTADO_CIVIL = 11;
         public const int MARCA = 18;
+        public const int TIPO_PERSONA = 49;
 
     }
 

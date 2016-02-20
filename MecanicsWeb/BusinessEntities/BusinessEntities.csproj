@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BECliente.cs" />
+    <Compile Include="BEContacto.cs" />
     <Compile Include="BEMenu.cs" />
     <Compile Include="BEParametria.cs" />
     <Compile Include="BERoles.cs" />

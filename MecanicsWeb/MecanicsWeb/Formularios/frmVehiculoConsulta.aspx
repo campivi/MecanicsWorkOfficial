@@ -20,6 +20,8 @@
                     <legend>MANTENIMIENTO VEHICULOS</legend>
                     <div class="row">
                         <table width="100%">
+                            <asp:UpdatePanel ID="upDatos" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate> 
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
@@ -30,14 +32,6 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="tbCodigo" runat="server" Width="100px" Enabled="false"></asp:TextBox>                          
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Cliente:</td>
-                                <td>
-                                    <asp:TextBox ID="tbCliente" runat="server" Width="200px" ></asp:TextBox>
-                                    <asp:Label ID="RFV1" runat="server" Text="*"  CssClass="failureNotification" Visible="false" ToolTip="El Cliente es Obligatorio"></asp:Label>                        
                                 </td>
                             </tr>
                             <tr>
@@ -63,7 +57,7 @@
                                     Marca:
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="ddlMarca" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlMarca" runat="server" Width="200px"></asp:DropDownList>
                                     <asp:Label ID="RFV4" runat="server" Text="*" CssClass="failureNotification" Visible="false" ToolTip="Seleccione Marca de Vehículo"></asp:Label>
                                 </td>
                             </tr>
@@ -96,7 +90,9 @@
                                     Año:</td>
                                 <td>
                                    <asp:TextBox ID="tbAnio" runat="server" Width="200px" MaxLength="4"></asp:TextBox>    
+                                   
                                    <asp:Label ID="RFV8" runat="server" Text="*" CssClass="failureNotification" Visible="false" ToolTip="El Año del Vehículo es Obligatorio"></asp:Label>                                 
+                                   
                                 </td>  
                             </tr>
                             <tr>
@@ -114,10 +110,13 @@
                             <tr>
                                 <td>&nbsp;</td>
                                 <td align="right">
-                                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" onclick="btnGuardar_Click" />
+                                    <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" onclick="btnNuevo_Click" />
+                                    <asp:Button ID="btnGuardar" runat="server" Enabled="false" Text="Guardar" onclick="btnGuardar_Click" />
                                     <asp:Button ID="btnCerrar" runat="server" Text="Cerrar" onclick="btnCerrar_Click" />
                                 </td>
                             </tr>
+                            </ContentTemplate>
+                            </asp:UpdatePanel>
                         </table>
                     </div>
               </fieldset> 
@@ -132,7 +131,7 @@
                                     Cliente :
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbClienteSearch" runat="server" Width="100px" MaxLength="10"></asp:TextBox>
+                                    <asp:TextBox ID="tbClienteSearch" runat="server" Width="250px" MaxLength="10"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -140,7 +139,7 @@
                                     Placa :
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbPlacaSearch" runat="server" Width="300px" ></asp:TextBox>                               
+                                    <asp:TextBox ID="tbPlacaSearch" runat="server" Width="200px" ></asp:TextBox>                               
                                 </td>                      
                             </tr>  
                          </table>
@@ -162,16 +161,6 @@
                 <table width="100%">
                     <tr>
                         <td>
-                            <asp:UpdatePanel ID="UpLabel" runat="server" UpdateMode="Conditional">
-                                <ContentTemplate>    
-                                    <fieldset>
-                                        <legend>Resultados de la Búsqueda</legend>
-                                        <div class="row">
-                                            <asp:Label ID="lblContador" runat="server" Text=""></asp:Label>
-                                        </div>
-                                    </fieldset>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
                             <br />
                         </td>
                     </tr>
@@ -186,6 +175,13 @@
                                         onrowcommand="dgCliente_RowCommand" onrowdatabound="dgCliente_RowDataBound" >
                                     <HeaderStyle BackColor="#0B3861" Font-Bold="True" ForeColor="White" />
                                     <Columns>
+                                        <asp:TemplateField HeaderText="">
+                                            <ItemTemplate>
+                                                <asp:ImageButton ID="ibSeleccionar" runat="server" ImageUrl="~/App_Themes/Menu/11.png" Width="16px" Height="16px" SkinID="imgEdit" CommandName="Seleccionar" ToolTip="Seleccionar"
+                                                    CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ID") %>'>
+                                                </asp:ImageButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField> 
                                         <asp:TemplateField HeaderText="">
                                             <ItemTemplate>
                                                 <asp:ImageButton ID="ibModificar" runat="server" ImageUrl="~/App_Themes/Menu/2.png" SkinID="imgEdit" CommandName="Modificar" ToolTip="Modificar"
